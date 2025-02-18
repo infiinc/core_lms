@@ -1,0 +1,379 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{######}",
+ "creation": "2025-02-17 14:42:22.342046",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "user_details_section",
+  "full_name",
+  "user",
+  "student_code",
+  "column_break_zcrh",
+  "current_college",
+  "college_name",
+  "address_section",
+  "permanent_address",
+  "column_break_rhjw",
+  "correspond_address",
+  "same_as_permanent_address",
+  "tab_break_rztn",
+  "qualifications_section",
+  "ssc_institute_name",
+  "ssc_year_of_completion",
+  "column_break_omth",
+  "ssc_grade",
+  "ssc_marksheet",
+  "status",
+  "hsc_qualification_section",
+  "hsc_institute_name",
+  "hsc_year_of_completion",
+  "column_break_hcbu",
+  "hsc_grade",
+  "hsc_marksheet",
+  "undergraduate_degree_section",
+  "ug_institute_name",
+  "ug_degree_name",
+  "ug_current_year",
+  "column_break_cjmz",
+  "degree_year_of_completion",
+  "ug_grade",
+  "undergraduate_certificate",
+  "master_degree_if_applicable_section",
+  "masters_institute_name",
+  "masters_degree_name",
+  "master_current_year",
+  "column_break_tfck",
+  "masters_year_of_completion",
+  "master_grade",
+  "masters_degree_certificate",
+  "phd_if_applicable_section",
+  "phd_institute_name",
+  "phd_research_topic",
+  "column_break_rrbn",
+  "phd_year_of_completion",
+  "thesus_upload",
+  "additional_information_section",
+  "field_of_study",
+  "specializations",
+  "column_break_yais",
+  "research_papers_if_any",
+  "work_experience_if_applicable",
+  "linkedin_profile_optional"
+ ],
+ "fields": [
+  {
+   "fieldname": "user_details_section",
+   "fieldtype": "Section Break",
+   "label": "User Details"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "User",
+   "options": "User"
+  },
+  {
+   "fieldname": "qualifications_section",
+   "fieldtype": "Section Break",
+   "label": "Secondary School (SSC) Qualifications"
+  },
+  {
+   "fieldname": "ssc_marksheet",
+   "fieldtype": "Attach",
+   "label": "SSC Marksheet",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_omth",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "hsc_marksheet",
+   "fieldtype": "Attach",
+   "label": "HSC Marksheet"
+  },
+  {
+   "fieldname": "hsc_qualification_section",
+   "fieldtype": "Section Break",
+   "label": "Higher Secondary School (SSC) Qualifications"
+  },
+  {
+   "fieldname": "column_break_hcbu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "current_college",
+   "fieldtype": "Link",
+   "label": "Current College",
+   "options": "College"
+  },
+  {
+   "fieldname": "address_section",
+   "fieldtype": "Section Break",
+   "label": "Address"
+  },
+  {
+   "fieldname": "column_break_rhjw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "correspond_address",
+   "fieldtype": "Small Text",
+   "label": "Correspond Address "
+  },
+  {
+   "fieldname": "ssc_grade",
+   "fieldtype": "Float",
+   "label": "Grade/Percentage",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tab_break_rztn",
+   "fieldtype": "Tab Break",
+   "label": "Qualification Details"
+  },
+  {
+   "fieldname": "ssc_institute_name",
+   "fieldtype": "Data",
+   "label": "Institute Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "ssc_year_of_completion",
+   "fieldtype": "Int",
+   "label": "Year of Completion",
+   "reqd": 1
+  },
+  {
+   "fieldname": "hsc_institute_name",
+   "fieldtype": "Data",
+   "label": "Institute Name"
+  },
+  {
+   "fieldname": "hsc_year_of_completion",
+   "fieldtype": "Int",
+   "label": "Year of Completion",
+   "options": "College"
+  },
+  {
+   "fieldname": "undergraduate_degree_section",
+   "fieldtype": "Section Break",
+   "label": "Undergraduate Degree"
+  },
+  {
+   "fieldname": "ug_institute_name",
+   "fieldtype": "Data",
+   "label": "Institute Name",
+   "options": "College"
+  },
+  {
+   "fieldname": "ug_degree_name",
+   "fieldtype": "Data",
+   "label": "Degree Name"
+  },
+  {
+   "fieldname": "degree_year_of_completion",
+   "fieldtype": "Int",
+   "label": "Year of Completion"
+  },
+  {
+   "fieldname": "column_break_cjmz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "undergraduate_certificate",
+   "fieldtype": "Attach",
+   "label": "Undergraduate Certificate "
+  },
+  {
+   "fieldname": "master_degree_if_applicable_section",
+   "fieldtype": "Section Break",
+   "label": "Master Degree (if applicable)"
+  },
+  {
+   "fieldname": "masters_institute_name",
+   "fieldtype": "Data",
+   "label": "Institute Name "
+  },
+  {
+   "fieldname": "masters_degree_name",
+   "fieldtype": "Data",
+   "label": "Degree Name "
+  },
+  {
+   "fieldname": "masters_year_of_completion",
+   "fieldtype": "Int",
+   "label": "Year of Completion "
+  },
+  {
+   "fieldname": "column_break_tfck",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "masters_degree_certificate",
+   "fieldtype": "Attach",
+   "label": "Masters Degree Certificate  "
+  },
+  {
+   "fieldname": "phd_if_applicable_section",
+   "fieldtype": "Section Break",
+   "label": "PhD (if applicable)"
+  },
+  {
+   "fieldname": "phd_institute_name",
+   "fieldtype": "Data",
+   "label": "Institute Name "
+  },
+  {
+   "fieldname": "phd_year_of_completion",
+   "fieldtype": "Int",
+   "label": "Year of Completion"
+  },
+  {
+   "fieldname": "column_break_rrbn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "thesus_upload",
+   "fieldtype": "Attach",
+   "label": "Thesus Upload"
+  },
+  {
+   "fieldname": "additional_information_section",
+   "fieldtype": "Section Break",
+   "label": "Additional Information"
+  },
+  {
+   "fieldname": "field_of_study",
+   "fieldtype": "Data",
+   "label": "Field of Study"
+  },
+  {
+   "fieldname": "specializations",
+   "fieldtype": "Data",
+   "label": "Specializations"
+  },
+  {
+   "fieldname": "research_papers_if_any",
+   "fieldtype": "Data",
+   "label": "Research Papers (if any)"
+  },
+  {
+   "fieldname": "work_experience_if_applicable",
+   "fieldtype": "Data",
+   "label": "Work Experience (if applicable)"
+  },
+  {
+   "fieldname": "linkedin_profile_optional",
+   "fieldtype": "Data",
+   "label": "LinkedIn Profile (optional)"
+  },
+  {
+   "fieldname": "student_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Student Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_zcrh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "college_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "College Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Full Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "permanent_address",
+   "fieldtype": "Small Text",
+   "label": "Permanent Address"
+  },
+  {
+   "default": "0",
+   "fieldname": "same_as_permanent_address",
+   "fieldtype": "Check",
+   "label": "Same as Permanent Address"
+  },
+  {
+   "fieldname": "hsc_grade",
+   "fieldtype": "Float",
+   "label": "Grade/Percentage",
+   "options": "College"
+  },
+  {
+   "fieldname": "ug_grade",
+   "fieldtype": "Float",
+   "label": "Grade/CGPA",
+   "precision": "2"
+  },
+  {
+   "fieldname": "phd_research_topic",
+   "fieldtype": "Data",
+   "label": "Research Topic"
+  },
+  {
+   "fieldname": "ug_current_year",
+   "fieldtype": "Data",
+   "label": "Current Year"
+  },
+  {
+   "fieldname": "master_current_year",
+   "fieldtype": "Data",
+   "label": "Current Year"
+  },
+  {
+   "fieldname": "master_grade",
+   "fieldtype": "Float",
+   "label": "Grade/CGPA"
+  },
+  {
+   "fieldname": "column_break_yais",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Pursuing\nCompleted",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-02-18 15:12:25.943520",
+ "modified_by": "Administrator",
+ "module": "Core Lms",
+ "name": "Student Extra Details",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
