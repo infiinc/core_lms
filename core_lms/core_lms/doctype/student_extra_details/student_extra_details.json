@@ -73,7 +73,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "User",
-   "options": "User"
+   "options": "User",
+   "reqd": 1
   },
   {
    "fieldname": "qualifications_section",
@@ -108,7 +109,8 @@
    "fieldname": "current_college",
    "fieldtype": "Link",
    "label": "Current College",
-   "options": "College"
+   "options": "College",
+   "reqd": 1
   },
   {
    "fieldname": "address_section",
@@ -353,7 +355,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-02-18 15:12:25.943520",
+ "modified": "2025-02-18 16:12:15.969012",
  "modified_by": "Administrator",
  "module": "Core Lms",
  "name": "Student Extra Details",

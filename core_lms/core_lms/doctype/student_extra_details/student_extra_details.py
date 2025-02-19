@@ -11,6 +11,8 @@ class StudentExtraDetails(Document):
             college = frappe.get_doc("College", self.current_college)
             country = frappe.get_doc("Country", college.country)
             user = frappe.get_doc("User", self.user)
+            if self.same_as_permanent_address:
+                self.correspond_address = self.permanent_address
             if college.pincode and college.name:
                 self.student_code = f"S{country.custom_mobile_number_extension}{college.pincode}{college.name}{self.name}"
                 self.college_name = college.college_name

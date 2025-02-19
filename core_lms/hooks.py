@@ -246,3 +246,5 @@ app_license = "mit"
 # }
 
 fixtures = ["Custom Field"]
+
+signup_form_template = "core_lms.utils.custom_signup_form"

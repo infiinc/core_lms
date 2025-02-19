@@ -1,0 +1,245 @@
+<form class="form-signin form-signup hide" role="form">
+    <div class="page-card-body">
+        <div class="form-group">
+            <label class="form-label sr-only" for="signup_fullname">{{ _("Full Name") }}</label>
+            <input type="text" id="signup_fullname" class="form-control" placeholder="{{ _('Sample Name') }}"
+                required autofocus autocomplete="name">
+            <small class="error-message" style="color: red; display: none;"></small>
+        </div>
+        <div class="form-group">
+            <label class="form-label sr-only" for="signup_email">{{ _("Email") }}</label>
+            <input type="email" id="signup_email" class="form-control"
+                placeholder="{{ _('new@example.com') }}" required autocomplete="username">
+            <small class="error-message" style="color: red; display: none;"></small>
+        </div>
+        
+	<div class="form-group">
+		<label class="form-label sr-only" for="signup_password">{{ _("Password") }}</label>
+		<div class="password-field">
+			<input type="password" id="signup_password" class="form-control" placeholder="•••••"
+				autocomplete="current-password" required>
+
+			<svg class="field-icon password-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
+				xmlns="http://www.w3.org/2000/svg">
+					<use class="es-lock" href="#es-line-lock"></use>
+			</svg>
+			<span toggle="#signup_password" class="toggle-password text-muted">{{ _('Show') }}</span>
+		</div>
+	</div>
+
+    </div>
+    <div class="page-card-actions">
+        <button class="btn btn-sm btn-primary btn-block btn-signup" type="button" id="signup-button">
+            {{ _("Sign up") }}
+        </button>
+
+        <p class="text-center sign-up-message">
+            <a href="#login" class="blue">{{ _("Have an account? Login") }}</a>
+        </p>
+    </div>
+</form>
+<!-- Toast Notification -->
+<div id="toast" class="toast hide">
+    <p id="toast-message"></p>
+</div>
+
+<style>
+    .error {
+        border-color: red !important;
+    }
+    .toast {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #28a745;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        display: none;
+        font-size: 14px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        text-align: center;
+    }
+    .toast.show {
+        display: block;
+        animation: fadeInOut 3s ease-in-out;
+    }
+    @keyframes fadeInOut {
+        0% { opacity: 0; transform: translateX(-50%) translateY(10px); }
+        10% { opacity: 1; transform: translateX(-50%) translateY(0); }
+        90% { opacity: 1; transform: translateX(-50%) translateY(0); }
+        100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+    }
+</style>
+
+<script>
+document.getElementById("signup-button").addEventListener("click", function() {
+    let fullName = document.getElementById("signup_fullname");
+    let email = document.getElementById("signup_email");
+    let password = document.getElementById("signup_password");
+    let signupButton = document.getElementById("signup-button");
+
+    let fields = [fullName, email, password];
+    let valid = true;
+
+    // Reset previous error messages
+    fields.forEach(field => {
+        field.classList.remove("error");
+        field.nextElementSibling.style.display = "none";
+    });
+
+    // Check for empty fields
+    if (!fullName.value.trim()) {
+        showError(fullName, "Full Name is required.");
+        valid = false;
+    }
+    if (!email.value.trim()) {
+        showError(email, "Email is required.");
+        valid = false;
+    } else if (!validateEmail(email.value.trim())) {
+        showError(email, "Invalid email format.");
+        valid = false;
+    }
+    if (!password.value.trim()) {
+        showError(password, "Password is required.");
+        valid = false;
+    } else if (password.value.length < 6) {
+        showError(password, "Password must be at least 6 characters.");
+        valid = false;
+    }
+
+    if (!valid) return;
+
+    signupButton.disabled = true;
+    signupButton.innerText = "Signing up...";
+
+    let formData = new URLSearchParams();
+    formData.append("full_name", fullName.value.trim());
+    formData.append("email", email.value.trim());
+    formData.append("password", password.value.trim());
+
+    fetch('/api/method/core_lms.api.user_signup', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message.status === "error") {
+            if (data.message.field === "email") {
+                showError(email, data.message.message);
+            } else {
+                showModal(data.message, "error");
+            }
+        } else {
+            showModal("Signup successful! Please check your email", "success");
+        }
+    })
+    .catch(error => console.error("Error:", error))
+    .finally(() => {
+        signupButton.disabled = false;
+        signupButton.innerText = "Sign up";
+    });
+});
+
+function showError(input, message) {
+    input.classList.add("error");
+    let errorElement = input.nextElementSibling;
+    errorElement.innerText = message;
+    errorElement.style.display = "block";
+}
+
+function showToast(message, type) {
+    let toast = document.getElementById("toast");
+    let toastMessage = document.getElementById("toast-message");
+    toastMessage.innerText = message;
+    toast.style.background = type === "error" ? "#dc3545" : "#28a745";
+    toast.classList.add("show");
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 3000);
+}
+
+function validateEmail(email) {
+    let re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return re.test(email);
+}
+function showModal(message, type) {
+    let modal = document.getElementById("signupModal");
+    let modalMessage = document.getElementById("modal-message");
+    let okButton = document.getElementById("modal-ok-btn");
+
+    modalMessage.innerText = message;
+    modal.style.display = "block"; // Show modal
+
+    // Close modal on clicking 'X' or 'OK'
+    document.querySelector(".close-modal").onclick = () => {
+        modal.style.display = "none";
+        if (type === "success") {
+            window.location.href = "#login";
+        }
+    };
+
+    okButton.onclick = () => {
+        modal.style.display = "none";
+        if (type === "success") {
+            window.location.href = "#login";
+        }
+    };
+
+    // Close on outside click
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
+}
+
+function closeModal(message, type) {
+    let modal = document.getElementById("signupModal");
+    modal.style.display = "none"; 
+}
+
+</script>
+
+<!-- Signup Success/Error Modal -->
+<div id="signupModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <p id="modal-message"></p>
+        <button id="modal-ok-btn" class="btn btn-primary">OK</button>
+    </div>
+</div>
+
+<style>
+    /* Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    .modal-content {
+        background-color: white;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 300px;
+        text-align: center;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .close-modal {
+        float: right;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    #modal-ok-btn {
+        margin-top: 10px;
+    }
+</style>
