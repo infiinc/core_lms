@@ -84,8 +84,7 @@
   {
    "fieldname": "ssc_marksheet",
    "fieldtype": "Attach",
-   "label": "SSC Marksheet",
-   "reqd": 1
+   "label": "SSC Marksheet"
   },
   {
    "fieldname": "column_break_omth",
@@ -129,8 +128,7 @@
   {
    "fieldname": "ssc_grade",
    "fieldtype": "Float",
-   "label": "Grade/Percentage",
-   "reqd": 1
+   "label": "Grade/Percentage"
   },
   {
    "fieldname": "tab_break_rztn",
@@ -140,14 +138,12 @@
   {
    "fieldname": "ssc_institute_name",
    "fieldtype": "Data",
-   "label": "Institute Name",
-   "reqd": 1
+   "label": "Institute Name"
   },
   {
    "fieldname": "ssc_year_of_completion",
    "fieldtype": "Int",
-   "label": "Year of Completion",
-   "reqd": 1
+   "label": "Year of Completion"
   },
   {
    "fieldname": "hsc_institute_name",
@@ -349,13 +345,12 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Pursuing\nCompleted",
-   "reqd": 1
+   "options": "Pursuing\nCompleted"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-02-18 16:12:15.969012",
+ "modified": "2025-02-28 12:13:50.800361",
  "modified_by": "Administrator",
  "module": "Core Lms",
  "name": "Student Extra Details",
@@ -371,6 +366,18 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LMS Student",
    "share": 1,
    "write": 1
   }
